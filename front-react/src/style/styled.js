@@ -7,6 +7,13 @@ export const LogoImg = styled.img`
     margin-top: ${(props) => (props.marginTop ? `${props.marginTop}px` : "91px")};
     cursor: pointer;
   `;
+  export const BlackLine = styled.div`
+    width: ${(props) => (props.width ? `${props.width}px` : "300px")};
+    height: 0px;
+    margin-top: ${(props) => (props.marginTop ? `${props.marginTop}px` : "60px")};
+    border: ${(props) =>
+      props.checkColor ? `1px solid ${props.checkColor}` : `1px solid #e5e5e5`};
+  `;
 
 //LoginPage 스타일
 export const LogInComponent = styled.div`
@@ -112,6 +119,104 @@ export const SignupTag = styled.a`
   color: #333333;
 `;
 
+//signUp 페이지 스타일링
+export const SignUpComponent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const SignUpInsideBox = styled.div`
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+export const SignUpTxt = styled.span`
+  height: 67px;
+  margin-top: 40px;
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 46px;
+  line-height: 67px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.1em;
+  text-transform: uppercase;
+  color: #333333;
+`;
+export const SignUpTxt2 = styled.span`
+  height: 26px;
+  margin-top: 5px;
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.1em;
+  text-transform: uppercase;
+  color: #999999;
+`;
+export const SignUpNormalInput = styled.input`
+  box-sizing: border-box;
+  width: 600px;
+  height: 60px;
+  margin-top: 10px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  letter-spacing: -0.1em;
+  &::placeholder {
+    color: #999999;
+  }
+`;
+
+export const SignUpBtn = styled.button`
+  width: 600px;
+  height: 60px;
+  margin-top: 40px;
+  margin-bottom: 200px;
+  background: #222222;
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: -0.1em;
+  cursor: pointer;
+  color: #ffffff;
+`;
+export const ExplainTxt = styled.div`
+  height: 20px;
+  margin-top: 40px;
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.1em;
+
+  color: #333333;
+`;
+
+export const CheckWarnTxt = styled.span`
+  height: 23px;
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  letter-spacing: -0.1em;
+  color: #ff0000;
+`;
 
 
  
