@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
-import Font_L from "./fonts/NotoSansKR-Light.woff";
-import Font_R from "./fonts/NotoSansKR-Regular.woff";
-import Font_B from "./fonts/NotoSansKR-Bold.woff";
+import Font_L from "../fonts/NotoSansKR-Light.woff";
+import Font_R from "../fonts/NotoSansKR-Regular.woff";
+import Font_B from "../fonts/NotoSansKR-Bold.woff";
 
 const GlobalStyles = createGlobalStyle`
 // 아래에 전역 스타일을 추가

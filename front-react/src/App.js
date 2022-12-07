@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
 import TodoListPage from "./pages/TodoListPage";
-import GlobalStyles from "./GlobalStyles";
+import GlobalStyles from "./style/GlobalStyles";
 
 function App() {
   return (

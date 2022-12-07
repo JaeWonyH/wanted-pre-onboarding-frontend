@@ -1,7 +1,8 @@
 import React from "react";
+import LoginForm from "../components/LoginForm";
 
 export default function HomePage(){
     return(
-        <div>홈페이지</div>
+        <LoginForm />
     )
 }
