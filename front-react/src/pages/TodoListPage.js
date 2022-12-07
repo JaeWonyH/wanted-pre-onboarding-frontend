@@ -1,7 +1,10 @@
 import React from "react";
+import TodoList from "../components/TodoList";
 
 export default function TodoListPage(){
     return(
-        <div>투두 리스트 페이지</div>
+        <div>
+            <TodoList />
+        </div>
     )
 }

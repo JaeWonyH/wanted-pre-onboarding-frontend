@@ -42,7 +42,7 @@ export default function SignUpForm() {
   };
 
   const emailBlur = useCallback(() => {
-    const rgx = /^[a-z|A-Z|0-9]*@$/;
+    const rgx = /@/;
     if (email.length === 0) {
       return setEmailError(true);
     }
