@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   SignUpNormalInput,
@@ -13,6 +13,7 @@ import {
   ExplainTxt,
 } from "../style/styled";
 import logo from "../img/logo.png";
+import axios from "axios";
 
 export default function SignUpForm() {
   const navigate = useNavigate();
@@ -67,29 +68,23 @@ export default function SignUpForm() {
   }, [pwCheck, pw]);
 
   const onSubmit = useCallback(() => {
-    if (
-      emailError ||
-      pwError ||
-      pwCheckError
-    ) {
+    if (emailError || pwError || pwCheckError) {
       alert("유효성 검사를 확인해주세요.");
       return;
     }
-    if (
-      !emailError &&
-      !pwError &&
-      !pwCheckError
-    ) {
-      //axios 통신
+    if (!emailError && !pwError && !pwCheckError) {
+      axios.post(
+        "/auth/signup",
+        { email: email, password: pw },
+        {
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      ).then((res)=>(navigate("/")))
+      .catch((error)=>(alert(error.response.data.message)));
     }
-  }, [
-    email,
-    pw,
-    pwCheck,
-    emailError,
-    pwError,
-    pwCheckError,
-  ]);
+  }, [email, pw, pwCheck, emailError, pwError, pwCheckError]);
 
   return (
     <SignUpComponent>
@@ -108,7 +103,7 @@ export default function SignUpForm() {
             onBlur={emailBlur}
             placeholder="이메일아이디"
           />
-          
+
           {emailError === true ? (
             <CheckWarnTxt>
               이메일 형식을 맞쳐주세요. (@ 반드시 포함)
@@ -125,9 +120,7 @@ export default function SignUpForm() {
             placeholder="비밀번호"
           />
           {pwError === true ? (
-            <CheckWarnTxt>
-              8자 이상 입력하세요.
-            </CheckWarnTxt>
+            <CheckWarnTxt>8자 이상 입력하세요.</CheckWarnTxt>
           ) : (
             <CheckWarnTxt />
           )}
@@ -150,4 +143,3 @@ export default function SignUpForm() {
     </SignUpComponent>
   );
 }
-

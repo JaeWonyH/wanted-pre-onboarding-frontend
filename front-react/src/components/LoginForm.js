@@ -1,4 +1,4 @@
-import React, { useCallback , useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import {
   PwVector,
   EmailInput,
@@ -13,21 +13,23 @@ import {
 } from "../style/styled";
 import { useNavigate } from "react-router-dom";
 import logo from "../img/logo.png";
+import axios from "axios";
 
 function LoginForm() {
- 
+  useEffect(() => {
+    if (localStorage.getItem('jwtToken')) {
+        alert('로그인 정보가 있습니다.');
+        navigate('/todo');
+    }
+}, []);
   const navigate = useNavigate();
- 
   const gotoHome = () => {
     navigate("/");
   };
 
   const [email, setEmail] = useState("");
-
   const [pw, setPw] = useState("");
-
   const [vector, setVector] = useState(false);
-
   const emailHandler = (event) => {
     setEmail(event.currentTarget.value);
   };
@@ -36,12 +38,22 @@ function LoginForm() {
     setPw(event.currentTarget.value);
   };
 
-  const onSubmit = useCallback(
-    (event) => {
-        event.preventDefault();
-    },
-    [email, pw]
-  );
+  async function onSubmit(event) {
+    event.preventDefault();
+    try {
+      const res = await axios.post(
+        "/auth/signin",
+        { email: email, password: pw },
+        {
+          withCredentials: false,
+        }
+      );
+      localStorage.setItem("jwtToken", res.data.access_token); //로컬 스토리지에 쿠키 저장
+      navigate("/todo");
+    } catch (error) {
+      alert(error.response.data.message);
+    }
+  }
   const onClickVector = useCallback(() => {
     setVector(!vector);
     console.log(vector);
@@ -69,8 +81,6 @@ function LoginForm() {
               <PwVector color="black"></PwVector>
             </div>
           </PwInputBox>
-
-
           <LoginBtn>로그인</LoginBtn>
           <TagBox>
             <SignupTag href="/signUp">회원가입</SignupTag>
