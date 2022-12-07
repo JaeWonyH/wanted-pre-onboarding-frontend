@@ -1,4 +1,4 @@
-import React, { useState, useCallback} from "react";
+import React, { useState, useCallback } from "react";
 import {
   LinkCategory,
   HeaderComponent,
@@ -12,7 +12,7 @@ import logo from "../img/logo.png";
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {
-    const JWTTOKEN = localStorage.getItem('jwtToken');
+  const JWTTOKEN = localStorage.getItem("jwtToken");
   const navigate = useNavigate();
   const [menu, setMenu] = useState(false);
 
@@ -33,7 +33,7 @@ export default function Header() {
     navigate("/login");
   };
   return (
-    <HeaderComponentBox>
+    <div>
       <HeaderComponent>
         <LinkCategory>
           <HamburgerMenu onClick={onClickMenu} show={menu}>
@@ -51,7 +51,7 @@ export default function Header() {
             marginTop={1}
           ></LogoImg>
         </div>
-       <div></div>
+        <div></div>
       </HeaderComponent>
 
       {JWTTOKEN ? (
@@ -61,7 +61,6 @@ export default function Header() {
       ) : (
         <div></div>
       )}
-    </HeaderComponentBox>
+    </div>
   );
 }
-
