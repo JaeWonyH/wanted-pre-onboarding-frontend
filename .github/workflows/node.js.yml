@@ -26,7 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency: ./front-react/package-lock.json
+        cache-dependency: /home/runner/work/wanted-pre-onboarding-frontend/wanted-pre-onboarding-frontend/front-react
     - name: Install Dependencies
       run: npm install --force
       working-directory: ${{ env.working-directory }}
