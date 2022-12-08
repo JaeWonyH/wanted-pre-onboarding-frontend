@@ -12,7 +12,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      working-directory: /front-react
+      working-directory: /home/runner/work/wanted-pre-onboarding-frontend/wanted-pre-onboarding-frontend/front-react
 
     strategy:
       matrix:
