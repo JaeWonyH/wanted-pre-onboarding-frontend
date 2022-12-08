@@ -62,4 +62,5 @@
 
 - API 주소: https://pre-onboarding-selection-task.shop/
 
-/테스트용
+# Depley
+- 배포 주소 : http://select-task.s3-website.ap-northeast-2.amazonaws.com/
