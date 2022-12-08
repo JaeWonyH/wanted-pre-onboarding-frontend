@@ -12,11 +12,12 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      working-directory: /home/runner/work/wanted-pre-onboarding-frontend/wanted-pre-onboarding-frontend/front-react
+      working-directory: ./front-react
 
     strategy:
       matrix:
         node-version: [18.x]
+        
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -26,6 +27,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        working-directory: ${{ env.working-directory }}
     - name: Install Dependencies
       run: npm install --force
       working-directory: ${{ env.working-directory }}
