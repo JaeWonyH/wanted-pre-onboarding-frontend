@@ -12,7 +12,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      working-directory: /react-front
+      working-directory: /front-react
 
     strategy:
       matrix:
