@@ -96,9 +96,7 @@
   > `/todo` 경로에 투두리스트 구현
   >
   > - 개별 아이템별 내용과 완료표시 여부 표시
-  > - 개별 아이템별 수정![image](https://user-images.githubusercontent.com/89454575/207047643-f3c35f13-1fc2-4a5b-aeae-9c89eb654216.png)
-, 취소, 삭제![image](https://user-images.githubusercontent.com/89454575/207047610-5d683ffb-50e9-4d23-80f7-23c37f1c0ec5.png)
- 버튼 존재
+  > - 개별 아이템별 수정, 취소, 삭제버튼 존재
 
   <br>
 
