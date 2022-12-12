@@ -36,7 +36,7 @@
 
 > 배포방법
 > - Github Acion 활용하여 CI\CD방식으로 AWS S3에 정적호스팅을 활용한 배포
-> 배포링크 : http://select-task.s3-website.ap-northeast-2.amazonaws.com/
+> - 배포링크 : http://select-task.s3-website.ap-northeast-2.amazonaws.com/
 
 <br>
 
