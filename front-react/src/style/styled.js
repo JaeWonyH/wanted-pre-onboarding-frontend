@@ -362,3 +362,33 @@ export const GetBlogAllTableLine = styled.div`
   height: 0px;
   border: 1px solid #cccccc;
 `;
+export const PostCommentInput = styled.input`
+width: 580px;
+height: 50px;
+background: #ffffff;
+border-radius: 15px;
+border: 1px solid #e5e5e5;
+font-family: "Noto Sans CJK KR";
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 23px;
+letter-spacing: -0.1em;
+&::placeholder {
+  color: #999999;
+}
+`;
+export const PostBlogBtn = styled.button`
+width: 100px;
+  height: 50px;
+  margin-left: 10px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 56px;
+  cursor: pointer;
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+  color: #333333;`;
