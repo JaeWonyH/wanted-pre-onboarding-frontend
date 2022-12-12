@@ -4,7 +4,7 @@ import {
   GetBlogAllTable,
   GetBlogAllTableLine,
   PostBlogBtn,
-  PostCommentInput
+  PostCommentInput,
 } from "../style/styled";
 import axios from "axios";
 import TodoDetail from "./TodoDetail";
@@ -37,36 +37,30 @@ export default function TodoList() {
   };
   async function onSubmit(event) {
     event.preventDefault();
-    try {
-      axios.defaults.headers.common["Authorization"] = "";
-      const JWTTOEKN = localStorage.getItem("jwtToken");
-      axios.defaults.headers.common["Authorization"] = `Bearer ${JWTTOEKN}`;
-      const res = await axios.post(
-        "/todos",
-        { todo: todo },
-        {
-          withCredentials: false,
-        }
-      );
-      console.log(res.data);
-      getTodoLists();
-      setTodo("");
-    } catch (error) {
-      console.log(error.response.data.message);
+    var result = window.confirm("등록하시겠습니까?");
+    if (result) {
+      try {
+        axios.defaults.headers.common["Authorization"] = "";
+        const JWTTOEKN = localStorage.getItem("jwtToken");
+        axios.defaults.headers.common["Authorization"] = `Bearer ${JWTTOEKN}`;
+        const res = await axios.post(
+          "/todos",
+          { todo: todo },
+          {
+            withCredentials: false,
+          }
+        );
+        console.log(res.data);
+        getTodoLists();
+        setTodo("");
+      } catch (error) {
+        console.log(error.response.data.message);
+      }
     }
   }
 
-  const deleteOnClick = () => {
-    console.log("삭제 버튼 눌림");
-  };
-  const updateOnClick = () => {
-    console.log("수정 버튼 눌림");
-  };
-
   const TodoLists = todoLists.map((todoList) => {
-    return (  
-      <TodoDetail todoList={todoList} />
-    );
+    return <TodoDetail todoList={todoList} />;
   });
 
   return (

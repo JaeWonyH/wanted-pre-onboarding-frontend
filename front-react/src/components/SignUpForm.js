@@ -67,13 +67,9 @@ export default function SignUpForm() {
     return setPwCheckError(false);
   }, [pwCheck, pw]);
 
-  const onSubmit = useCallback(() => {
-    if (emailError || pwError || pwCheckError) {
-      alert("유효성 검사를 확인해주세요.");
-      return;
-    }
-    if (!emailError && !pwError && !pwCheckError) {
-      axios.post(
+  async function signUp() {
+    try {
+      const res = await axios.post(
         "/auth/signup",
         { email: email, password: pw },
         {
@@ -81,8 +77,21 @@ export default function SignUpForm() {
             "Content-type": "application/json",
           },
         }
-      ).then((res)=>(navigate("/")))
-      .catch((error)=>(alert(error.response.data.message)));
+      )
+      alert("회원가입이 완료되었습니다!")
+      navigate("/")
+    } catch (error) {
+      alert(error.response.data.message);
+    }
+  }
+
+  const onSubmit = useCallback(() => {
+    if (emailError || pwError || pwCheckError) {
+      alert("유효성 검사를 확인해주세요.");
+      return;
+    }
+    if (!emailError && !pwError && !pwCheckError) {
+      signUp();
     }
   }, [email, pw, pwCheck, emailError, pwError, pwCheckError]);
 

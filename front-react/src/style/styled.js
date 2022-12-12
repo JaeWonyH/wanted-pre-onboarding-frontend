@@ -363,7 +363,7 @@ export const GetBlogAllTableLine = styled.div`
   border: 1px solid #cccccc;
 `;
 export const PostCommentInput = styled.input`
-width: 580px;
+width: 500px;
 height: 50px;
 background: #ffffff;
 border-radius: 15px;
@@ -379,7 +379,7 @@ letter-spacing: -0.1em;
 }
 `;
 export const PostBlogBtn = styled.button`
-width: 100px;
+width: 80px;
   height: 50px;
   margin-left: 10px;
   background: #ffffff;

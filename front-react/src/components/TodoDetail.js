@@ -2,6 +2,8 @@ import React, { useState, useCallback } from "react";
 import moreBtn from "../img/moreBtn.png";
 import deleteImg from "../img/delete.png";
 import editImg from "../img/edit.png";
+import checkedImg from "../img/checked.png";
+import unCheckedImg from "../img/unChecked.png";
 import {
   GetBlogAllTr,
   GetCommentsDiv,
@@ -41,34 +43,41 @@ export default function TodoDetail({ todoList }) {
     });
   };
   async function deleteTodo() {
-    try {
-      axios.defaults.headers.common["Authorization"] = "";
-      const JWTTOEKN = localStorage.getItem("jwtToken");
-      axios.defaults.headers.common["Authorization"] = `Bearer ${JWTTOEKN}`;
-      const res = await axios.delete(`/todos/${todoList.id}`, {
-        withCredentials: false,
-      });
-      window.location.reload();
-    } catch (error) {
-      console.log(error.response.data.message);
+    var result = window.confirm("삭제하시겠습니까?")
+    if(result){
+        try {
+            axios.defaults.headers.common["Authorization"] = "";
+            const JWTTOEKN = localStorage.getItem("jwtToken");
+            axios.defaults.headers.common["Authorization"] = `Bearer ${JWTTOEKN}`;
+            const res = await axios.delete(`/todos/${todoList.id}`, {
+              withCredentials: false,
+            });
+            window.location.reload();
+          } catch (error) {
+            console.log(error.response.data.message);
+          }
     }
+    
   }
   async function putTodo() {
-    try {
-      axios.defaults.headers.common["Authorization"] = "";
-      const JWTTOEKN = localStorage.getItem("jwtToken");
-      axios.defaults.headers.common["Authorization"] = `Bearer ${JWTTOEKN}`;
-      const res = await axios.put(
-        `/todos/${todoList.id}`,
-        { todo: todo.todo, isCompleted: todo.isCompleted },
-        {
-          withCredentials: false,
-        }
-      );
-        window.location.reload();
-    } catch (error) {
-      console.log(error.response.data.message);
-    }
+    var result = window.confirm("수정하시겠습니까?")
+    if(result){
+        try {
+            axios.defaults.headers.common["Authorization"] = "";
+            const JWTTOEKN = localStorage.getItem("jwtToken");
+            axios.defaults.headers.common["Authorization"] = `Bearer ${JWTTOEKN}`;
+            const res = await axios.put(
+              `/todos/${todoList.id}`,
+              { todo: todo.todo, isCompleted: todo.isCompleted },
+              {
+                withCredentials: false,
+              }
+            );
+            window.location.reload();
+          } catch (error) {
+            console.log(error.response.data.message);
+          }
+    }   
   }
   const onSubmit = useCallback(
     (event) => {
@@ -87,6 +96,9 @@ export default function TodoDetail({ todoList }) {
     console.log("수정 버튼 눌림");
     setUpdateState(!updateState);
   };
+  const removeUpdate = () => {
+    setUpdateState(!updateState);
+  }
   return (
     <GetBlogAllTr>
       <td>
@@ -94,7 +106,13 @@ export default function TodoDetail({ todoList }) {
           <table>
             <tr>
               <GetCommentsHeaderBox>
-                <div>{todoList.isCompleted ? "완료" : "비완료"}</div>
+                <div>
+                  {todoList.isCompleted ? (
+                    <DeleteCommentImg src={checkedImg} />
+                  ) : (
+                    <DeleteCommentImg src={unCheckedImg} />
+                  )}
+                </div>
                 <div></div>
                 <GetBlogAllCreated>
                   <GetCommentsMoreBtn onClick={deleteOnClick}>
@@ -137,9 +155,8 @@ export default function TodoDetail({ todoList }) {
                   onChange={isCompletedHandler}
                 ></input>
               )}
-
-              <PostBlogBtn>수정하기</PostBlogBtn>
-              {/* <PostBlogBtn>취소하기</PostBlogBtn> */}
+              <PostBlogBtn>수정</PostBlogBtn>
+              <PostBlogBtn onClick={removeUpdate}>취소</PostBlogBtn>
             </form>
           </td>
         ) : (
