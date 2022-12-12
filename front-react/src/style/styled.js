@@ -234,7 +234,7 @@ export const HeaderComponent = styled.div`
 `;
 export const HomeMenu = styled.div`
   width: 100%;
-  height: ${(props) => (props.logIn === false ? "10vh" : "40vh")};
+  height: ${(props) => (props.logIn === false ? "10vh" : "10vh")};
 
   display: ${(props) => (props.show === false ? "none" : "block")};
 `;
