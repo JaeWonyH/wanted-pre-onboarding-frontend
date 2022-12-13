@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function TodoListPage(){
     const navigate = useNavigate();
     const JWTTOKEN = localStorage.getItem('jwtToken')
+    console.log(JWTTOKEN);
     useEffect(()=>{
         if(JWTTOKEN===null){
             alert("로그인 정보가 없습니다.")

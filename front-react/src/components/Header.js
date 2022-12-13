@@ -28,10 +28,6 @@ export default function Header() {
     navigate("/");
   }, []);
 
-  const onClickLogIn = () => {
-    console.log("로그인");
-    navigate("/login");
-  };
   return (
     <div>
       <HeaderComponent>
