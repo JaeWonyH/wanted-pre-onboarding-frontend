@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState } from "react";
 import {
   PwVector,
   EmailInput,
@@ -16,12 +16,6 @@ import logo from "../img/logo.png";
 import axios from "axios";
 
 function LoginForm() {
-  useEffect(() => {
-    if (localStorage.getItem('jwtToken')) {
-        alert('로그인 정보가 있습니다.');
-        navigate('/todo');
-    }
-}, []);
   const navigate = useNavigate();
   const gotoHome = () => {
     navigate("/");
