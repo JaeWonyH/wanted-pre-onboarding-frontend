@@ -11,7 +11,7 @@ export default function HomePage(){
             alert("로그인 정보가 있습니다.")
             navigate("/todo")
         }
-    },[JWTTOKEN]);
+    },[]);
     return(
         <LoginForm />
     )
